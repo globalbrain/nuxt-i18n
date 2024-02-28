@@ -30,7 +30,7 @@ export default defineNuxtConfig({
 
 ## Contribution
 
-We're really excited that you are interested in contributing to Sefirot. Before submitting your contribution though, please make sure to take a moment and read through the following guidelines.
+We're really excited that you are interested in contributing. Before submitting your contribution though, please make sure to take a moment and read through the following guidelines.
 
 ### Code style guide
 
