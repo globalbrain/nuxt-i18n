@@ -80,7 +80,7 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.build.transpile.push(resolve('runtime'))
 
     // Setup localized pages
-    setupPages(options as Required<ModuleOptions>, nuxt)
+    setupPages(options as Required<ModuleOptions>)
 
     // Add i18n plugin
     addPlugin(resolve('runtime/plugin'))

@@ -48,12 +48,6 @@ export interface I18nRoutingLocalizationOptions {
    */
   localizeRoutesPrefixable?: LocalizeRoutesPrefixable
   /**
-   * Whether to include un-prefixed fallback route
-   *
-   * @default false
-   */
-  includeUnprefixedFallback?: boolean
-  /**
    * Resolver for route localizing options
    *
    * @default undefined
