@@ -22,10 +22,10 @@ export function getLocaleRouteName(
   routeName: string | null,
   locale: string
 ): string {
-  return getLocalizeRouteName(getRouteName(routeName), locale)
+  return getLocalizedRouteName(getRouteName(routeName), locale)
 }
 
-export function getLocalizeRouteName(
+export function getLocalizedRouteName(
   routeName: string | null,
   locale: string
 ): string {
