@@ -42,12 +42,6 @@ export interface I18nRoutingLocalizationOptions {
    */
   trailingSlash?: boolean
   /**
-   * Internal separator used for generated route names for each locale
-   *
-   * @default '___'
-   */
-  routesNameSeparator?: string
-  /**
    * Whether to prefix the localize route path with the locale or not
    *
    * @default {@link DefaultLocalizeRoutesPrefixable}
