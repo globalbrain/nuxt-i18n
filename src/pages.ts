@@ -7,7 +7,7 @@ export function setupPages(
   options: Required<ModuleOptions>,
   nuxt: Nuxt
 ) {
-  const includeUprefixedFallback = nuxt.options._generate
+  const includeUnprefixedFallback = nuxt.options._generate
 
   const optionsResolver: RouteOptionsResolver = (route, localeCodes) => {
     const routeOptions: ComputedRouteOptions = {
@@ -31,7 +31,7 @@ export function setupPages(
   extendPages((pages) => {
     const localizedPages = localizeRoutes(pages, {
       ...options,
-      includeUprefixedFallback,
+      includeUnprefixedFallback,
       optionsResolver
     })
     pages.splice(0, pages.length)
