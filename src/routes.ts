@@ -1,5 +1,5 @@
 import type { NuxtPage } from '@nuxt/schema'
-import { adjustRoutePathForTrailingSlash } from './utils'
+import { adjustRoutePathForTrailingSlash, getLocalizeRouteName } from './utils'
 
 export interface ComputedRouteOptions {
   locales: readonly string[]
@@ -138,7 +138,7 @@ export function localizeRoutes(
 
       // Make localized page name
       if (name)
-        localizedRoute.name = `${name}___${locale}`
+        localizedRoute.name = getLocalizeRouteName(name, locale)
 
       // Generate localized children routes
       if (route.children) {
