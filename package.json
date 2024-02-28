@@ -36,21 +36,18 @@
     "vitest:run": "vitest run",
     "test": "pnpm run type && pnpm run lint && pnpm run vitest:run",
     "test:fail": "pnpm run type && pnpm run lint:fail && pnpm run vitest:run",
-    "release": "bumpp --commit --push --tag && npm publish --access public",
+    "release": "release-it",
     "postinstall": "nuxt-module-build prepare",
     "prepack": "nuxt-module-build build"
   },
   "dependencies": {
     "@nuxt/kit": "^3.8.1",
-    "knitwork": "^1.0.0",
-    "pathe": "^1.1.1"
+    "knitwork": "^1.0.0"
   },
   "devDependencies": {
     "@globalbrain/eslint-config": "^1.5.2",
     "@nuxt/module-builder": "^0.5.4",
-    "@nuxt/test-utils": "^3.8.1",
     "@types/node": "^20.9.0",
-    "bumpp": "^9.2.0",
     "eslint": "^8.57.0",
     "nuxt": "^3.8.1",
     "typescript": "^5.2.2",
