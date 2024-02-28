@@ -1,6 +1,6 @@
 # `@globalbrain/nuxt-i18n`
 
-[![Test](https://github.com/globalbrain/nuxt-i18n/actions/workflows/ci.yml/badge.svg)](https://github.com/globalbrain/nuxt-i18n/actions/workflows/ci.yml)
+[![Test](https://github.com/globalbrain/nuxt-i18n/actions/workflows/test.yml/badge.svg)](https://github.com/globalbrain/nuxt-i18n/actions/workflows/test.yml)
 [![License](https://img.shields.io/npm/l/@globalbrain/sefirot.svg)](https://github.com/globalbrain/sefirot/blob/main/LICENSE.md)
 
 [Nuxt](https://nuxt.com) module for internationalization with localized routing.
