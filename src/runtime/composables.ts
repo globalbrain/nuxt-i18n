@@ -1,13 +1,12 @@
-import type { Lang } from '#build/i18n'
 import {
   type ComputedRef,
   computed,
   reloadNuxtApp,
   useCookie,
   useRoute,
-  useState,
+  useState
 } from '#imports'
-import { options } from '#build/i18n'
+import { type Lang, options } from '#build/i18n'
 
 export type { Lang }
 
@@ -33,7 +32,7 @@ export function useLocale<T>(
   translations: Translations<T>
 ): LocaleTranslate<Translations<T>[Lang]>
 export function useLocale<T>(
-  translations?: Translations<T>,
+  translations?: Translations<T>
 ): Locale | LocaleTranslate<Translations<T>[Lang]> {
   const locale = useState<Lang>('locale')
 
@@ -41,21 +40,19 @@ export function useLocale<T>(
 
   function setLocale(
     newLocale: Lang,
-    { reload = true, skipLocalization = false } = {},
+    { reload = true, skipLocalization = false } = {}
   ) {
     const route = useRoute()
-    if (locale.value === newLocale)
-      return
+    if (locale.value === newLocale) { return }
     useCookie('i18n_redirected').value = newLocale
     locale.value = newLocale
     if (reload) {
       if (skipLocalization) {
         reloadNuxtApp({ force: true })
-      }
-      else {
+      } else {
         reloadNuxtApp({
           path: localizePath(route.fullPath, newLocale),
-          force: true,
+          force: true
         })
       }
     }
@@ -63,8 +60,7 @@ export function useLocale<T>(
 
   function localizePath(path: string, targetLocale: Lang) {
     const parts = path.replace(/^\//, '').split('/')
-    if (options.locales.includes(parts[0]))
-      parts.shift()
+    options.locales.includes(parts[0]) && parts.shift()
     parts.unshift(targetLocale === options.defaultLocale ? '' : targetLocale)
     return parts.join('/').replace(/^\/?/, '/')
   }
@@ -73,6 +69,6 @@ export function useLocale<T>(
     locale: computed(() => locale.value),
     setLocale,
     localizePath,
-    t: t!,
+    t: t!
   }
 }

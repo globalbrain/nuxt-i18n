@@ -1,4 +1,4 @@
-import type { NuxtPage } from '@nuxt/schema'
+import { type NuxtPage } from '@nuxt/schema'
 import { adjustRoutePathForTrailingSlash, getLocalizeRouteName } from './utils'
 
 export interface ComputedRouteOptions {
@@ -86,35 +86,34 @@ export function localizeRoutes(
     trailingSlash = false,
     optionsResolver = undefined,
     localizeRoutesPrefixable = DefaultLocalizeRoutesPrefixable,
-    locales = [],
-  }: I18nRoutingLocalizationOptions = {},
+    locales = []
+  }: I18nRoutingLocalizationOptions = {}
 ): NuxtPage[] {
   function makeLocalizedRoutes(
     route: NuxtPage,
     allowedLocaleCodes: string[],
     isChild = false,
-    isExtraPageTree = false,
+    isExtraPageTree = false
   ): NuxtPage[] {
     // Skip route localization
-    if (route.redirect && !route.file)
-      return [route]
+    if (route.redirect && !route.file) { return [route] }
 
     // Resolve with route (page) options
     let routeOptions: ComputedRouteOptions | null = null
     if (optionsResolver != null) {
       routeOptions = optionsResolver(route, allowedLocaleCodes)
-      if (routeOptions == null)
-        return [route]
+      if (routeOptions == null) { return [route] }
     }
 
     // Component specific options
     const componentOptions: ComputedRouteOptions = {
       locales,
-      paths: {},
+      paths: {}
     }
 
-    if (routeOptions != null)
+    if (routeOptions != null) {
       Object.assign(componentOptions, routeOptions)
+    }
 
     Object.assign(componentOptions, { locales: allowedLocaleCodes })
 
@@ -127,7 +126,7 @@ export function localizeRoutes(
       && routeOptions.locales.length > 0
     ) {
       componentOptions.locales = componentOptions.locales.filter(
-        locale => routeOptions!.locales.includes(locale),
+        (locale) => routeOptions!.locales.includes(locale)
       )
     }
 
@@ -137,23 +136,25 @@ export function localizeRoutes(
       const localizedRoute = { ...route }
 
       // Make localized page name
-      if (name)
+      if (name) {
         localizedRoute.name = getLocalizeRouteName(name, locale)
+      }
 
       // Generate localized children routes
       if (route.children) {
         localizedRoute.children = route.children.reduce<NonNullable<NuxtPage['children']>>(
           (children, child) => [
             ...children,
-            ...makeLocalizedRoutes(child, [locale], true, isExtraPageTree),
+            ...makeLocalizedRoutes(child, [locale], true, isExtraPageTree)
           ],
-          [],
+          []
         )
       }
 
       // Get custom path if any
-      if (componentOptions.paths && componentOptions.paths[locale])
+      if (componentOptions.paths && componentOptions.paths[locale]) {
         path = componentOptions.paths[locale]
+      }
 
       const isChildWithRelativePath = isChild && !path.startsWith('/')
 
@@ -162,16 +163,17 @@ export function localizeRoutes(
         isChild,
         path,
         currentLocale: locale,
-        defaultLocale,
+        defaultLocale
       })
-      if (shouldAddPrefix)
+      if (shouldAddPrefix) {
         path = `/${locale}${path}`
+      }
 
       if (path) {
         path = adjustRoutePathForTrailingSlash(
           path,
           trailingSlash,
-          isChildWithRelativePath,
+          isChildWithRelativePath
         )
       }
 
@@ -185,8 +187,8 @@ export function localizeRoutes(
   return routes.reduce<NuxtPage[]>(
     (localized, route) => [
       ...localized,
-      ...makeLocalizedRoutes(route, locales || []),
+      ...makeLocalizedRoutes(route, locales || [])
     ],
-    [],
+    []
   )
 }

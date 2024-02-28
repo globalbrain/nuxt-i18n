@@ -1,16 +1,20 @@
-/* eslint-disable antfu/top-level-function */
-import type {
-  RouteLocationNormalized,
-  RouteLocationNormalizedLoaded,
+import {
+  type RouteLocationNormalized,
+  type RouteLocationNormalizedLoaded
 } from 'vue-router'
 import { options } from '#build/i18n'
 
-const isString = (val: unknown): val is string => typeof val === 'string'
-const isObject = (val: unknown): val is Record<any, any> =>
-  val !== null && typeof val === 'object'
+function isString(val: unknown): val is string {
+  return typeof val === 'string'
+}
 
-const getLocalesRegex = (localeCodes: string[]) =>
-  new RegExp(`^/(${localeCodes.join('|')})(?:/|$)`, 'i')
+function isObject(val: unknown): val is Record<any, any> {
+  return val !== null && typeof val === 'object'
+}
+
+function getLocalesRegex(localeCodes: string[]) {
+  return new RegExp(`^/(${localeCodes.join('|')})(?:/|$)`, 'i')
+}
 
 /**
  * Extract locale code from a given route:
@@ -19,7 +23,7 @@ const getLocalesRegex = (localeCodes: string[]) =>
  */
 export function getLocaleFromRoute(
   route: string | RouteLocationNormalizedLoaded | RouteLocationNormalized,
-  { localeCodes = options.locales } = {},
+  { localeCodes = options.locales } = {}
 ): string {
   const localesPattern = `(${localeCodes.join('|')})`
   const regexpName = new RegExp(`___${localesPattern}$`, 'i')
@@ -30,20 +34,15 @@ export function getLocaleFromRoute(
     if (route.name) {
       const name = isString(route.name) ? route.name : route.name.toString()
       const matches = name.match(regexpName)
-      if (matches && matches.length > 1)
-        return matches[1]
-    }
-    else if (route.path) {
+      if (matches && matches.length > 1) { return matches[1] }
+    } else if (route.path) {
       // Extract from path
       const matches = route.path.match(regexpPath)
-      if (matches && matches.length > 1)
-        return matches[1]
+      if (matches && matches.length > 1) { return matches[1] }
     }
-  }
-  else if (isString(route)) {
+  } else if (isString(route)) {
     const matches = route.match(regexpPath)
-    if (matches && matches.length > 1)
-      return matches[1]
+    if (matches && matches.length > 1) { return matches[1] }
   }
 
   return ''

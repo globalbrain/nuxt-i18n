@@ -1,11 +1,11 @@
-import { genTypeImport } from 'knitwork'
 import {
   addImportsSources,
   addPlugin,
   addTemplate,
   createResolver,
-  defineNuxtModule,
+  defineNuxtModule
 } from '@nuxt/kit'
+import { genTypeImport } from 'knitwork'
 import { setupPages } from './pages'
 import { logger } from './utils'
 
@@ -55,13 +55,13 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: 'i18n',
     compatibility: {
       nuxt: '^3',
-      bridge: false,
-    },
+      bridge: false
+    }
   },
   defaults: {
     defaultLocale: '',
     locales: [],
-    pages: {},
+    pages: {}
   },
   async setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
@@ -89,7 +89,7 @@ export default defineNuxtModule<ModuleOptions>({
     addTemplate({
       filename: 'i18n.mjs',
       getContents: () =>
-        `export const options = ${JSON.stringify(options, null, 2)};`,
+        `export const options = ${JSON.stringify(options, null, 2)};`
     })
 
     addTemplate({
@@ -97,13 +97,13 @@ export default defineNuxtModule<ModuleOptions>({
       getContents: () => [
         genTypeImport(resolve('module'), ['ModuleOptions']),
         'export declare const options: Required<ModuleOptions> & { locales: Lang[] };',
-        `export type Lang = ${options.locales!.map(locale => `'${locale}'`).join(' | ')};`,
-      ].join('\n'),
+        `export type Lang = ${options.locales!.map((locale) => `'${locale}'`).join(' | ')};`
+      ].join('\n')
     })
 
     addImportsSources({
       from: resolve('runtime/composables'),
-      imports: ['useLocale'],
+      imports: ['useLocale']
     })
-  },
+  }
 })

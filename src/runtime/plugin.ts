@@ -1,12 +1,12 @@
-import { getLocaleFromRoute } from './utils'
 import {
   addRouteMiddleware,
   defineNuxtPlugin,
   navigateTo,
   useCookie,
   useRequestHeaders,
-  useState,
+  useState
 } from '#imports'
+import { getLocaleFromRoute } from './utils'
 import { options } from '#build/i18n'
 
 const clean = (str: string) => str.split('-')[0].trim().toLowerCase()
@@ -24,29 +24,31 @@ export default defineNuxtPlugin({
             useRequestHeaders(['accept-language'])['accept-language'] || ''
           )
             .split(',')
-            .map(l => clean(l.split(';')[0]))
-            .filter(l => options.locales.includes(l))[0]
+            .map((l) => clean(l.split(';')[0]))
+            .filter((l) => options.locales.includes(l))[0]
 
           const browserLocale
             = typeof document !== 'undefined'
               ? navigator.languages
                 .map(clean)
-                .filter(l => options.locales.includes(l))[0]
+                .filter((l) => options.locales.includes(l))[0]
                 || (options.locales.includes(clean(navigator.language))
                   ? clean(navigator.language)
                   : '')
               : ''
 
           const locale = headerLocale || browserLocale
-          if (locale && locale !== options.defaultLocale)
+          if (locale && locale !== options.defaultLocale) {
             return navigateTo(`/${locale}`)
+          }
         }
 
         const targetLocale = getLocaleFromRoute(to)
-        if (targetLocale && options.locales.includes(targetLocale))
+        if (targetLocale && options.locales.includes(targetLocale)) {
           useState<string>('locale').value = targetLocale
+        }
       },
-      { global: true },
+      { global: true }
     )
-  },
+  }
 })

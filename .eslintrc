@@ -1,0 +1,4 @@
+{
+  "extends": "@globalbrain",
+  "ignorePatterns": ["*.md"]
+}

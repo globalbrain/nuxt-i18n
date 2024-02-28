@@ -5,7 +5,7 @@ export const logger = useLogger('nuxt-i18n')
 export function adjustRoutePathForTrailingSlash(
   pagePath: string,
   trailingSlash: boolean,
-  isChildWithRelativePath: boolean,
+  isChildWithRelativePath: boolean
 ): string {
   return pagePath.replace(/\/+$/, '') + (trailingSlash ? '/' : '') || (isChildWithRelativePath ? '' : '/')
 }
