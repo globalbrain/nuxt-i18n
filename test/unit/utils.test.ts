@@ -6,7 +6,7 @@ import { adjustRoutePathForTrailingSlash, getLocaleRouteName } from '../../src/u
 // License: MIT
 describe('adjustRouteDefinitionForTrailingSlash', () => {
   describe('pagePath: /foo/bar', () => {
-    describe('trailingSlash: faawklse, isChildWithRelativePath: true', () => {
+    describe('trailingSlash: false, isChildWithRelativePath: true', () => {
       it('should be trailed with slash: /foo/bar/', () => {
         assert.equal(adjustRoutePathForTrailingSlash('/foo/bar', true, true), '/foo/bar/')
       })
