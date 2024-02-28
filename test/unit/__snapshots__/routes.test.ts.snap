@@ -54,27 +54,6 @@ exports[`localizeRoutes > has children > should be localized routing 1`] = `
 ]
 `;
 
-exports[`localizeRoutes > route name separator > should be localized routing 1`] = `
-[
-  {
-    "name": "home__en",
-    "path": "/en",
-  },
-  {
-    "name": "home__ja",
-    "path": "/ja",
-  },
-  {
-    "name": "about__en",
-    "path": "/en/about",
-  },
-  {
-    "name": "about__ja",
-    "path": "/ja/about",
-  },
-]
-`;
-
 exports[`localizeRoutes > route option resolver: routing disable > should be disabled routing 1`] = `
 [
   {
@@ -88,78 +67,7 @@ exports[`localizeRoutes > route option resolver: routing disable > should be dis
 ]
 `;
 
-exports[`localizeRoutes > strategy: "no_prefix" > should be localized routing 1`] = `
-[
-  {
-    "name": "home",
-    "path": "/",
-  },
-  {
-    "name": "about",
-    "path": "/about",
-  },
-]
-`;
-
-exports[`localizeRoutes > strategy: "prefix" > should be localized routing 1`] = `
-[
-  {
-    "name": "home",
-    "path": "/",
-  },
-  {
-    "name": "home___en",
-    "path": "/en",
-  },
-  {
-    "name": "home___ja",
-    "path": "/ja",
-  },
-  {
-    "name": "about",
-    "path": "/about",
-  },
-  {
-    "name": "about___en",
-    "path": "/en/about",
-  },
-  {
-    "name": "about___ja",
-    "path": "/ja/about",
-  },
-]
-`;
-
 exports[`localizeRoutes > strategy: "prefix_and_default" > should be localized routing 1`] = `
-[
-  {
-    "name": "home___en___default",
-    "path": "/",
-  },
-  {
-    "name": "home___en",
-    "path": "/en",
-  },
-  {
-    "name": "home___ja",
-    "path": "/ja",
-  },
-  {
-    "name": "about___en___default",
-    "path": "/about",
-  },
-  {
-    "name": "about___en",
-    "path": "/en/about",
-  },
-  {
-    "name": "about___ja",
-    "path": "/ja/about",
-  },
-]
-`;
-
-exports[`localizeRoutes > strategy: "prefix_except_default" > should be localized routing 1`] = `
 [
   {
     "name": "home___en",
