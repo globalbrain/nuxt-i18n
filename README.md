@@ -1,4 +1,4 @@
-# `@globalbrain/nuxt-i18n`
+# Global Brain: Nuxt I18N
 
 [![Test](https://github.com/globalbrain/nuxt-i18n/actions/workflows/test.yml/badge.svg)](https://github.com/globalbrain/nuxt-i18n/actions/workflows/test.yml)
 [![License](https://img.shields.io/npm/l/@globalbrain/sefirot.svg)](https://github.com/globalbrain/sefirot/blob/main/LICENSE.md)
@@ -30,7 +30,7 @@ export default defineNuxtConfig({
 
 ## Contribution
 
-We're really excited that you are interested in contributing. Before submitting your contribution though, please make sure to take a moment and read through the following guidelines.
+We are really excited that you are interested in contributing. Before submitting your contribution though, please make sure to take a moment and read through the following guidelines.
 
 ### Code style guide
 
