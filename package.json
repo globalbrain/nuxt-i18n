@@ -35,7 +35,7 @@
     "test": "pnpm run type && pnpm run lint && pnpm run vitest:run",
     "test:fail": "pnpm run type && pnpm run lint:fail && pnpm run vitest:run",
     "release": "release-it",
-    "postinstall": "nuxt-module-build prepare",
+    "prepare": "nuxi prepare playground",
     "prepack": "nuxt-module-build build"
   },
   "dependencies": {
