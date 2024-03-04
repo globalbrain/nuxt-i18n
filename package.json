@@ -1,6 +1,6 @@
 {
   "name": "@globalbrain/nuxt-i18n",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "packageManager": "pnpm@8.15.4",
   "description": "Minimal module for i18n with locale auto-imports & localized routing",
   "author": "Divyansh Singh <divyansh@globalbrains.com>",
