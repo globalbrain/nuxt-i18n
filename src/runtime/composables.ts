@@ -20,7 +20,7 @@ export interface Locale {
     locale: Lang,
     options?: { reload?: boolean; skipLocalization?: boolean }
   ): void
-  localizePath(path: string, locale: Lang): string
+  localizePath(path: string, locale?: Lang): string
 }
 
 export interface LocaleTranslate<T> extends Locale {
@@ -58,7 +58,8 @@ export function useLocale<T>(
     }
   }
 
-  function localizePath(path: string, targetLocale: Lang) {
+  function localizePath(path: string, targetLocale?: Lang) {
+    targetLocale = targetLocale || locale.value
     const parts = path.replace(/^\//, '').split('/')
     options.locales.includes(parts[0]) && parts.shift()
     parts.unshift(targetLocale === options.defaultLocale ? '' : targetLocale)
