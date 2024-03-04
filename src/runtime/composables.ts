@@ -69,6 +69,6 @@ export function useLocale<T>(
     locale: computed(() => locale.value),
     setLocale,
     localizePath,
-    t: t!
+    t: t || {} as any
   }
 }

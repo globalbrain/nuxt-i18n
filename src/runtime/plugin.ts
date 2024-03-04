@@ -43,7 +43,7 @@ export default defineNuxtPlugin({
           }
         }
 
-        const targetLocale = getLocaleFromRoute(to)
+        const targetLocale = getLocaleFromRoute(to) || options.defaultLocale
         if (targetLocale && options.locales.includes(targetLocale)) {
           useState<string>('locale').value = targetLocale
         }
