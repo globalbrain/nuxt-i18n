@@ -1,5 +1,12 @@
 
 
+## [1.2.2](https://github.com/globalbrain/nuxt-i18n/compare/v1.2.1...v1.2.2) (2024-03-06)
+
+
+### Bug Fixes
+
+* store i18n_redirected as persistent cookie ([656305e](https://github.com/globalbrain/nuxt-i18n/commit/656305e370cc930b5b7c1026cc32f31628fc185a))
+
 ## [1.2.1](https://github.com/globalbrain/nuxt-i18n/compare/v1.2.0...v1.2.1) (2024-03-06)
 
 
