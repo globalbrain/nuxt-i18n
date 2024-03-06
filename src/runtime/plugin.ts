@@ -22,7 +22,7 @@ export default defineNuxtPlugin({
         if (to.path === '/') {
           const cookieLocale = useCookie('i18n_redirected').value
 
-          if (cookieLocale) {
+          if (cookieLocale && options.locales.includes(cookieLocale) && cookieLocale !== options.defaultLocale) {
             return navigateTo(`/${cookieLocale}`)
           }
 
@@ -33,7 +33,7 @@ export default defineNuxtPlugin({
             .map((l) => clean(l.split(';')[0]))
             .filter((l) => options.locales.includes(l))[0]
 
-          if (headerLocale) {
+          if (headerLocale && cookieLocale !== options.defaultLocale) {
             return navigateTo(`/${headerLocale}`)
           }
 
@@ -47,7 +47,7 @@ export default defineNuxtPlugin({
                   : '')
               : ''
 
-          if (browserLocale) {
+          if (browserLocale && cookieLocale !== options.defaultLocale) {
             return navigateTo(`/${browserLocale}`)
           }
         }
