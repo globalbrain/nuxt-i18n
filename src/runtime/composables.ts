@@ -44,7 +44,7 @@ export function useLocale<T>(
   ) {
     const route = useRoute()
     if (locale.value === newLocale) { return }
-    useCookie('i18n_redirected').value = newLocale
+    useCookie('i18n_redirected', { maxAge: 31536000 }).value = newLocale
     locale.value = newLocale
     if (reload) {
       if (skipLocalization) {
