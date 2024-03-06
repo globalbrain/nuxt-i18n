@@ -22,8 +22,14 @@ export default defineNuxtPlugin({
         if (to.path === '/') {
           const cookieLocale = useCookie('i18n_redirected').value
 
-          if (cookieLocale && options.locales.includes(cookieLocale) && cookieLocale !== options.defaultLocale) {
-            return navigateTo(`/${cookieLocale}`)
+          if (cookieLocale && options.locales.includes(cookieLocale)) {
+            // return navigateTo(`/${cookieLocale}`)
+            if (cookieLocale !== options.defaultLocale) {
+              return navigateTo(`/${cookieLocale}`)
+            } else {
+              useState<string>('locale').value = options.defaultLocale
+              return
+            }
           }
 
           const headerLocale = (
