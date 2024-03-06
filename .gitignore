@@ -52,3 +52,4 @@ Temporary Items
 
 *.tgz
 .prettierrc
+.vscode

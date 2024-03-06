@@ -9,8 +9,6 @@ import {
 import { getLocaleFromRoute } from './utils'
 import { options } from '#build/i18n'
 
-const clean = (str: string) => str.split('-')[0].trim().toLowerCase()
-
 export default defineNuxtPlugin({
   name: 'nuxt-i18n-plugin',
   enforce: 'pre',
@@ -58,11 +56,13 @@ export default defineNuxtPlugin({
         }
 
         const targetLocale = getLocaleFromRoute(to) || options.defaultLocale
-        if (targetLocale && options.locales.includes(targetLocale)) {
-          useState<string>('locale').value = targetLocale
-        }
+        useState<string>('locale').value = targetLocale
       },
       { global: true }
     )
   }
 })
+
+function clean(str: string) {
+  return str.split('-')[0].trim().toLowerCase()
+}
