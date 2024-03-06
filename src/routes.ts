@@ -147,7 +147,7 @@ export function localizeRoutes(
 
       // Get custom path if any
       if (componentOptions.paths && componentOptions.paths[locale]) {
-        path = componentOptions.paths[locale]
+        path = componentOptions.paths[locale]!
       }
 
       const isChildWithRelativePath = isChild && !path.startsWith('/')

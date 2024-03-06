@@ -33,7 +33,7 @@ export default defineNuxtPlugin({
             useRequestHeaders(['accept-language'])['accept-language'] || ''
           )
             .split(',')
-            .map((l) => clean(l.split(';')[0]))
+            .map((l) => clean(l.split(';')[0]!))
             .filter((l) => options.locales.includes(l))[0]
 
           if (headerLocale && headerLocale !== options.defaultLocale) {
@@ -64,5 +64,5 @@ export default defineNuxtPlugin({
 })
 
 function clean(str: string) {
-  return str.split('-')[0].trim().toLowerCase()
+  return str.split('-')[0]!.trim().toLowerCase()
 }

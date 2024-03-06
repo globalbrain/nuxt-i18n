@@ -61,7 +61,7 @@ export function useLocale<T>(
   function localizePath(path: string, targetLocale?: Lang) {
     targetLocale = targetLocale || locale.value
     const parts = path.replace(/^\//, '').split('/')
-    options.locales.includes(parts[0]) && parts.shift()
+    options.locales.includes(parts[0]!) && parts.shift()
     parts.unshift(targetLocale === options.defaultLocale ? '' : targetLocale)
     return parts.join('/').replace(/^\/?/, '/')
   }
