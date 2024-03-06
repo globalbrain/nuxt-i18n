@@ -33,7 +33,7 @@ export default defineNuxtPlugin({
             .map((l) => clean(l.split(';')[0]))
             .filter((l) => options.locales.includes(l))[0]
 
-          if (headerLocale && cookieLocale !== options.defaultLocale) {
+          if (headerLocale && headerLocale !== options.defaultLocale) {
             return navigateTo(`/${headerLocale}`)
           }
 
@@ -47,7 +47,7 @@ export default defineNuxtPlugin({
                   : '')
               : ''
 
-          if (browserLocale && cookieLocale !== options.defaultLocale) {
+          if (browserLocale && browserLocale !== options.defaultLocale) {
             return navigateTo(`/${browserLocale}`)
           }
         }
