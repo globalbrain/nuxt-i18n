@@ -1,5 +1,12 @@
 
 
+## [1.2.1](https://github.com/globalbrain/nuxt-i18n/compare/v1.2.0...v1.2.1) (2024-03-06)
+
+
+### Bug Fixes
+
+* redirect to cookie locale if set ([#5](https://github.com/globalbrain/nuxt-i18n/issues/5)) ([8b6e695](https://github.com/globalbrain/nuxt-i18n/commit/8b6e695e0ce4f063ffa0eb4ccd0a4ec0817e3eb8))
+
 # [1.2.0](https://github.com/globalbrain/nuxt-i18n/compare/v1.1.2...v1.2.0) (2024-3-4)
 
 
