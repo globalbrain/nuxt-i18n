@@ -34,15 +34,15 @@ export function getLocaleFromRoute(
     if (route.name) {
       const name = isString(route.name) ? route.name : route.name.toString()
       const matches = name.match(regexpName)
-      if (matches && matches.length > 1) { return matches[1] }
+      if (matches && matches.length > 1) { return matches[1]! }
     } else if (route.path) {
       // Extract from path
       const matches = route.path.match(regexpPath)
-      if (matches && matches.length > 1) { return matches[1] }
+      if (matches && matches.length > 1) { return matches[1]! }
     }
   } else if (isString(route)) {
     const matches = route.match(regexpPath)
-    if (matches && matches.length > 1) { return matches[1] }
+    if (matches && matches.length > 1) { return matches[1]! }
   }
 
   return ''

@@ -9,8 +9,6 @@ import {
 import { getLocaleFromRoute } from './utils'
 import { options } from '#build/i18n'
 
-const clean = (str: string) => str.split('-')[0].trim().toLowerCase()
-
 export default defineNuxtPlugin({
   name: 'nuxt-i18n-plugin',
   enforce: 'pre',
@@ -19,13 +17,28 @@ export default defineNuxtPlugin({
     addRouteMiddleware(
       'nuxt-i18n-middleware',
       async (to) => {
-        if (to.path === '/' && !useCookie('i18n_redirected').value) {
+        if (to.path === '/') {
+          const cookieLocale = useCookie('i18n_redirected').value
+
+          if (cookieLocale && options.locales.includes(cookieLocale)) {
+            if (cookieLocale !== options.defaultLocale) {
+              return navigateTo(`/${cookieLocale}`)
+            } else {
+              useState<string>('locale').value = options.defaultLocale
+              return
+            }
+          }
+
           const headerLocale = (
             useRequestHeaders(['accept-language'])['accept-language'] || ''
           )
             .split(',')
-            .map((l) => clean(l.split(';')[0]))
+            .map((l) => clean(l.split(';')[0]!))
             .filter((l) => options.locales.includes(l))[0]
+
+          if (headerLocale && headerLocale !== options.defaultLocale) {
+            return navigateTo(`/${headerLocale}`)
+          }
 
           const browserLocale
             = typeof document !== 'undefined'
@@ -37,18 +50,19 @@ export default defineNuxtPlugin({
                   : '')
               : ''
 
-          const locale = headerLocale || browserLocale
-          if (locale && locale !== options.defaultLocale) {
-            return navigateTo(`/${locale}`)
+          if (browserLocale && browserLocale !== options.defaultLocale) {
+            return navigateTo(`/${browserLocale}`)
           }
         }
 
         const targetLocale = getLocaleFromRoute(to) || options.defaultLocale
-        if (targetLocale && options.locales.includes(targetLocale)) {
-          useState<string>('locale').value = targetLocale
-        }
+        useState<string>('locale').value = targetLocale
       },
       { global: true }
     )
   }
 })
+
+function clean(str: string) {
+  return str.split('-')[0]!.trim().toLowerCase()
+}
