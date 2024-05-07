@@ -17,7 +17,7 @@ export default defineNuxtPlugin({
     addRouteMiddleware(
       'nuxt-i18n-middleware',
       async (to) => {
-        if (to.meta.ssr !== false) {
+        if (to.meta.ssr === false) {
           const cookie = useCookie('locale')
           const locale = useState('locale')
           locale.value = cookie.value || locale.value || options.defaultLocale
