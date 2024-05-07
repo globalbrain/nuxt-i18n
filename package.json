@@ -1,7 +1,7 @@
 {
   "name": "@globalbrain/nuxt-i18n",
   "version": "1.2.2",
-  "packageManager": "pnpm@8.15.4",
+  "packageManager": "pnpm@9.1.0",
   "description": "Minimal module for i18n with locale auto-imports & localized routing",
   "author": "Divyansh Singh <divyansh@globalbrains.com>",
   "license": "MIT",
@@ -39,19 +39,22 @@
     "prepack": "nuxt-module-build build"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.10.3",
-    "knitwork": "^1.0.0"
+    "@nuxt/kit": "^3.11.2",
+    "defu": "^6.1.4",
+    "knitwork": "^1.1.0",
+    "radix3": "^1.1.2"
   },
   "devDependencies": {
-    "@globalbrain/eslint-config": "^1.5.2",
-    "@nuxt/module-builder": "^0.5.5",
+    "@globalbrain/eslint-config": "^1.6.0",
+    "@nuxt/module-builder": "^0.6.0",
     "@release-it/conventional-changelog": "^8.0.1",
-    "@types/node": "^20.11.21",
+    "@types/node": "^20.12.10",
     "eslint": "^8.57.0",
-    "nuxt": "^3.10.3",
-    "release-it": "^17.1.1",
-    "typescript": "^5.3.3",
-    "vitest": "1.0.0-beta.2",
+    "nuxt": "^3.11.2",
+    "release-it": "^17.2.1",
+    "typescript": "^5.4.5",
+    "unctx": "^2.3.1",
+    "vitest": "1.6.0",
     "vue-tsc": "^1.8.27"
   },
   "publishConfig": {

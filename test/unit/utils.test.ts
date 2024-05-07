@@ -50,16 +50,10 @@ describe('adjustRouteDefinitionForTrailingSlash', () => {
 
 describe('getLocaleRouteName', () => {
   it('should be `route1___en`', () => {
-    assert.equal(
-      getLocaleRouteName('route1', 'en'),
-      'route1___en'
-    )
+    assert.equal(getLocaleRouteName('route1', 'en'), 'route1___en')
   })
 
   it('should be ` (null)___en`', () => {
-    assert.equal(
-      getLocaleRouteName(null, 'en'),
-      '(null)___en'
-    )
+    assert.equal(getLocaleRouteName(null, 'en'), '(null)___en')
   })
 })

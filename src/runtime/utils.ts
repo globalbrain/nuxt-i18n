@@ -1,7 +1,4 @@
-import {
-  type RouteLocationNormalized,
-  type RouteLocationNormalizedLoaded
-} from 'vue-router'
+import { type RouteLocationNormalized, type RouteLocationNormalizedLoaded } from 'vue-router'
 import { options } from '#build/i18n'
 
 function isString(val: unknown): val is string {
