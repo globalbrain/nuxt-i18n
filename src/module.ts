@@ -80,7 +80,7 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.build.transpile.push(resolve('runtime'))
 
     // Setup localized pages
-    setupPages(options as Required<ModuleOptions>)
+    setupPages(options as Required<ModuleOptions>, nuxt.options.nitro.routeRules || {})
 
     // Add i18n plugin
     addPlugin(resolve('runtime/plugin'))
@@ -88,8 +88,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Load options template
     addTemplate({
       filename: 'i18n.mjs',
-      getContents: () =>
-        `export const options = ${JSON.stringify(options, null, 2)};`
+      getContents: () => `export const options = ${JSON.stringify(options, null, 2)};`
     })
 
     addTemplate({

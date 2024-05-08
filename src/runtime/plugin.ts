@@ -17,8 +17,15 @@ export default defineNuxtPlugin({
     addRouteMiddleware(
       'nuxt-i18n-middleware',
       async (to) => {
+        if (to.meta.ssr === false) {
+          const cookie = useCookie('locale')
+          const locale = useState('locale')
+          locale.value = cookie.value || locale.value || options.defaultLocale
+          return
+        }
+
         if (to.path === '/') {
-          const cookieLocale = useCookie('i18n_redirected').value
+          const cookieLocale = useCookie('locale').value
 
           if (cookieLocale && options.locales.includes(cookieLocale)) {
             if (cookieLocale !== options.defaultLocale) {
@@ -29,9 +36,7 @@ export default defineNuxtPlugin({
             }
           }
 
-          const headerLocale = (
-            useRequestHeaders(['accept-language'])['accept-language'] || ''
-          )
+          const headerLocale = (useRequestHeaders(['accept-language'])['accept-language'] || '')
             .split(',')
             .map((l) => clean(l.split(';')[0]!))
             .filter((l) => options.locales.includes(l))[0]
@@ -42,9 +47,7 @@ export default defineNuxtPlugin({
 
           const browserLocale
             = typeof document !== 'undefined'
-              ? navigator.languages
-                .map(clean)
-                .filter((l) => options.locales.includes(l))[0]
+              ? navigator.languages.map(clean).filter((l) => options.locales.includes(l))[0]
                 || (options.locales.includes(clean(navigator.language))
                   ? clean(navigator.language)
                   : '')
