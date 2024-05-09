@@ -1,5 +1,12 @@
 
 
+# [1.3.0](https://github.com/globalbrain/nuxt-i18n/compare/v1.2.2...v1.3.0) (2024-05-09)
+
+
+### Features
+
+* non-url i18n for csr routes ([#6](https://github.com/globalbrain/nuxt-i18n/issues/6)) ([23d996b](https://github.com/globalbrain/nuxt-i18n/commit/23d996b294ee32a5e7cf93e1f3db51b43d318f37))
+
 ## [1.2.2](https://github.com/globalbrain/nuxt-i18n/compare/v1.2.1...v1.2.2) (2024-03-06)
 
 
