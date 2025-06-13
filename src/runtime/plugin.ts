@@ -16,22 +16,21 @@ export default defineNuxtPlugin({
     // Add route middleware to load locale messages for the target route
     addRouteMiddleware(
       'nuxt-i18n-middleware',
-      async (to) => {
+      async (to, from) => {
+        const cookie = useCookie('locale', { maxAge: 31536000 })
+        const locale = useState<string | undefined>('locale')
+
         if (to.meta.ssr === false) {
-          const cookie = useCookie('locale')
-          const locale = useState('locale')
           locale.value = cookie.value || locale.value || options.defaultLocale
           return
         }
 
-        if (to.path === '/') {
-          const cookieLocale = useCookie('locale').value
-
-          if (cookieLocale && options.locales.includes(cookieLocale)) {
-            if (cookieLocale !== options.defaultLocale) {
-              return navigateTo(`/${cookieLocale}`)
+        if (to.path === '/' && from.path === '/') {
+          if (cookie.value && options.locales.includes(cookie.value)) {
+            if (cookie.value !== options.defaultLocale) {
+              return navigateTo(`/${cookie.value}`)
             } else {
-              useState<string>('locale').value = options.defaultLocale
+              locale.value = options.defaultLocale
               return
             }
           }
@@ -59,7 +58,8 @@ export default defineNuxtPlugin({
         }
 
         const targetLocale = getLocaleFromRoute(to) || options.defaultLocale
-        useState<string>('locale').value = targetLocale
+        locale.value = targetLocale
+        cookie.value = targetLocale
       },
       { global: true }
     )
