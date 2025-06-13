@@ -1,5 +1,12 @@
 
 
+## [1.3.1](https://github.com/globalbrain/nuxt-i18n/compare/v1.3.0...v1.3.1) (2025-06-13)
+
+
+### Bug Fixes
+
+* preserve the inferred locale on initial load ([52a97a4](https://github.com/globalbrain/nuxt-i18n/commit/52a97a4711d28d28c41a6b476d290cba65bd0d69))
+
 # [1.3.0](https://github.com/globalbrain/nuxt-i18n/compare/v1.2.2...v1.3.0) (2024-05-09)
 
 
