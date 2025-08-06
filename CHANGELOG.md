@@ -1,4 +1,11 @@
+# Changelog
 
+# [1.4.0](https://github.com/globalbrain/nuxt-i18n/compare/v1.3.1...v1.4.0) (2025-08-06)
+
+
+### Features
+
+* update compatibility for Nuxt 4 ([#7](https://github.com/globalbrain/nuxt-i18n/issues/7)) ([2c8e761](https://github.com/globalbrain/nuxt-i18n/commit/2c8e761cbf925225a499b6ea1c9881cf089ca5ab))
 
 ## [1.3.1](https://github.com/globalbrain/nuxt-i18n/compare/v1.3.0...v1.3.1) (2025-06-13)
 
