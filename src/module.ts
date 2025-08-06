@@ -54,8 +54,7 @@ export default defineNuxtModule<ModuleOptions>({
     name: 'nuxt-i18n',
     configKey: 'i18n',
     compatibility: {
-      nuxt: '>= 3',
-      bridge: false
+      nuxt: '>= 3'
     }
   },
   defaults: {
