@@ -1,5 +1,16 @@
 # Changelog
 
+# [1.5.0](https://github.com/globalbrain/nuxt-i18n/compare/v1.4.0...v1.5.0) (2026-05-26)
+
+
+### Features
+
+* support route localization opt-out ([e74aa7b](https://github.com/globalbrain/nuxt-i18n/commit/e74aa7b308001350ff3574d3a5dfba6f6d63aafd))
+
+### Bug Fixes
+
+* don't set locale.value before reloading ([f620083](https://github.com/globalbrain/nuxt-i18n/commit/f620083affaf971ded975c24b6a0e598b0665641))
+
 # [1.4.0](https://github.com/globalbrain/nuxt-i18n/compare/v1.3.1...v1.4.0) (2025-08-06)
 
 
