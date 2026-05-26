@@ -30,7 +30,6 @@ export function useLocale<T>(
     const route = useRoute()
     if (locale.value === newLocale) { return }
     useCookie('locale', { maxAge: 31536000 }).value = newLocale
-    locale.value = newLocale
     if (reload) {
       if (skipLocalization) {
         reloadNuxtApp({ force: true })
