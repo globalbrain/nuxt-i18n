@@ -127,7 +127,7 @@ export function localizeRoutes(
       let { path } = route
       const localizedRoute = { ...route }
 
-      if (meta?.ssr !== false) {
+      if (meta?.ssr !== false && meta?.i18n?.localize !== false) {
         // Make localized page name
         if (name) {
           localizedRoute.name = getLocalizedRouteName(name, locale)
